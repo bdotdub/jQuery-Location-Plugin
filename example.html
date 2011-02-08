@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>untitled</title>
+    <title>Plugin example</title>
     
     <link rel="stylesheet" href="css/jquery.location.plugin.css" type="text/css" media="screen" title="no title" charset="utf-8">
     
@@ -19,16 +19,9 @@
             <span>Location</span>
             <input type="text" name="location" id="location" value="">
             <input type="button" name="search" value="Search" id="search">
-            <input type="hidden" name="city_woeid" value="44418" id="city_woeid">
-            <input type="hidden" name="country_iso" value="GB" id="country_iso">
             <small>E.g. "Barcelona" or "United Kingdom"</small>
         </label>
     </p>
-    <div class="location-results" id="location-results" style="display: none; ">
-        <p>Choose the correct location below...</p>
-        <ul id="location-suggest"></ul>
-    </div>
-    
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -39,10 +32,7 @@ $(document).ready(function(){
     $('#profile-location').locationWidget({
         searchInput: '#location',
         searchButton: '#search',
-        yahooApiKey: 'Vk2APf_V34E_XD4ZeYOYKejwvp4wxzreVe37bodYwRX4riWwrtF2jvlDezl73lU-',
-        cityWoeid: '#city_woeid',
-        countryIso: '#country_iso',
-        locale: 'en-GB'
+        yahooApiKey: ''
     });
 });
 </script>

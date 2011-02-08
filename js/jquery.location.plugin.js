@@ -3,11 +3,17 @@
     $.fn.locationWidget = function(options){
         $.fn.locationWidget.options = $.extend({}, $.fn.locationWidget.options, options);
         options = $.fn.locationWidget.options;
+        //Prepare the hidden fields
+        var cityWoeidField = $('<input></input>').attr('type', 'hidden').attr('name', 'city_woeid').attr('id', 'city_woeid');
+        var countryIsoField = $('<input></input>').attr('type', 'hidden').attr('name', 'country_iso').attr('id', 'country_iso');
+        $(options.searchInput).after(cityWoeidField);
+        $(options.searchInput).after(countryIsoField);
+        
         //Prepare the UI
         var div = $('<div></div>').addClass('location-results').attr('id', 'location-results');
         var header = $('<p></p>').html('Choose the correct location below...');
         var ul = $('<ul></ul>').attr('id', 'location-suggest');
-        $(this).parent().parent().after(div.append(header).append(ul));
+        $(options.searchInput).parent().append(div.append(header).append(ul));
         $(options.resultCanvas).hide();
         
         //Avoid submit the form when enter key pressed
@@ -67,6 +73,8 @@
         
         $.getJSON(url, function(data){
             if(data.places.total > 0){
+                $(options.searchInput).attr('readonly', 'readonly');
+                
                 $(options.resultList).html('');
                 $(data.places.place).each(function(i, e){
                     var name = e.name;
@@ -83,6 +91,9 @@
                         $(options.searchInput).val($(this).children().html());
                         $(options.resultCanvas).hide();
                         $(options.searchInput).removeClass('edited');
+                        
+                        $(options.searchInput).attr('readonly', '');
+                        $(options.searchInput).blur();
                         
                         $.fn.locationWidget.searchInProgess = false;
                     }));
@@ -115,8 +126,8 @@
         searchInput: '',
         searchButton: '',
         yahooApiKey: '',
-        cityWoeid: '',
-        countryIso: '',
+        cityWoeid: '#city_woeid',
+        countryIso: '#country_iso',
         locale: 'en'
     }
 })(jQuery);

@@ -1,0 +1,11 @@
+=Description=
+
+This plugin converts an input type text in a geolocation widget.
+The widget can be used to let the users specify the city and country they reside
+just by typing the city name. The widget will show a list of maching places around
+the world and will let the user choose the appropiate combination of city/country.
+
+The widget will store a unique identifier of the place called WOEID (Where On Earth ID)
+and a country iso in two hidden fields. The WOEID is the standard way to identify places inside
+the Yahoo geo apis, that means that you can extract a lot of information
+of the places just by asking to the yahoo geo apis and passing the WOEID.
