@@ -69,7 +69,7 @@
         
         $(options.searchInput).css('background', '#fff url(images/spinner.gif) 98% 50% no-repeat');
         
-        var url = 'http://where.yahooapis.com/v1/places$and(.q(' + escape($(options.searchInput).val()) + '),.type(7));count=0?format=json&lang=' + options.locale + '&appid=' + options.yahooApiKey;
+        var url = 'http://where.yahooapis.com/v1/places$and(.q(' + escape($(options.searchInput).val()) + '),.type(7));count=0?format=json&lang=' + options.locale + '&appid=' + options.yahooApiKey + "&callback=?";
         
         $.getJSON(url, function(data){
             if(data.places.total > 0){
